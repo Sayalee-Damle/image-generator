@@ -20,10 +20,10 @@ prompt_playground = true
 
 [UI]
 # Name of the app and chatbot.
-name = "Chatbot"
+name = "Dall-E"
 
 # Description of the app and chatbot. This is used for HTML tags.
-# description = ""
+# description = "This bot will generate images using Dall-E according to the need of the user"
 
 # Large size content are by default collapsed for a cleaner ui
 default_collapse_content = true
@@ -35,7 +35,7 @@ default_expand_messages = false
 hide_cot = false
 
 # Link to your github repo. This will add a github button in the UI's header.
-# github = ""
+# github = "https://github.com/Sayalee-Damle/image-generator.git"
 
 # Specify a CSS file that can be used to customize the user interface.
 # The CSS file can be served from the public directory or via an external link.

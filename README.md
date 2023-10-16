@@ -8,7 +8,8 @@ This tool uses Dall-E to generate images based on user requirements.
 pip install poetry
 poetry shell
 poetry build
-poetry install```
+poetry install
+```
 
 
 
