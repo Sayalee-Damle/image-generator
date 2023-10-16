@@ -21,16 +21,6 @@ class Config:
     verbose_llm = os.getenv("VERBOSE_LLM") == "True"
     python_executor = Path(os.getenv("PYTHON_SCRIPT"))
 
-    
-    path_json = Path(os.getenv("JSON_PATH_DISC"))
-    path_csv = Path(os.getenv("CSV_FILES"))
-    
-    if not path_json.exists():
-        path_json.mkdir(exist_ok=True, parents=True)
-
-    if not path_csv.exists():
-        path_csv.mkdir(exist_ok=True, parents=True)
-
     ui_timeout = os.getenv("REQUEST_TIMEOUT")
 
 cfg = Config()

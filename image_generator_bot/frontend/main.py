@@ -1,7 +1,5 @@
 import chainlit as cl
 from chainlit.types import AskFileResponse
-from pathlib import Path
-from langchain.schema import Document
 
 from image_generator_bot.config import cfg
 import image_generator_bot.backend.image_generator as image_g
@@ -22,7 +20,6 @@ async def start() -> cl.Message:
             while True:
                 
                 image = await image_g.generate_advice_image(prompt)
-                #image_msg = [cl.Image(name = "image", display="inline", content = image)]
                 await cl.Message(content="Look at the image here! click the URL").send()
                 await cl.Message(content=f"{image}").send()
                 image_satisfied = await ask_user_msg("Are you satisfied with the image generated?")
