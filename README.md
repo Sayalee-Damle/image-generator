@@ -1,15 +1,15 @@
 ## Description
-```
+
 This tool uses Dall-E to generate images based on user requirements. 
 
 ## installation instructions
 
-```
+
 pip install poetry
 poetry shell
 poetry build
 poetry install
-```
+
 
 
 
