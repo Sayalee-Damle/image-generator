@@ -19,9 +19,17 @@ class Config:
         streaming=True,
     )
     verbose_llm = os.getenv("VERBOSE_LLM") == "True"
+
     python_executor = Path(os.getenv("PYTHON_SCRIPT"))
+    if not python_executor.exists():
+        python_executor.mkdir(exist_ok=True, parents=True)
 
     ui_timeout = os.getenv("REQUEST_TIMEOUT")
+
+    image_path = Path(os.getenv("IMAGE_PATH_DISC"))
+    if not image_path.exists():
+        image_path.mkdir(exist_ok=True, parents=True)
+
 
 cfg = Config()
 

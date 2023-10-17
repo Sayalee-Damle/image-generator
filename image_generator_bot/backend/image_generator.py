@@ -1,6 +1,7 @@
 from langchain.utilities.dalle_image_generator import DallEAPIWrapper
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
+from asyncer import asyncify
 
 from image_generator_bot.config import cfg
 import image_generator_bot.backend.templates as t
@@ -30,7 +31,7 @@ def generate_image(prompt: str) -> str:
 
 
 async def generate_advice_image(image_description) -> str:
-    return generate_image(image_description)
+    return await asyncify(generate_image)(image_description)
 
 
 if __name__ == "__main__":
