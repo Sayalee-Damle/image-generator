@@ -1,0 +1,12 @@
+[tagging]
+system_message = "You are an expert in terms of getting different types of sentiments from sentences."
+human_message = """Given this input that starts with === INPUT START === and ends with === INPUT END ===
+=== INPUT START ===
+{answer}
+=== INPUT END ===
+can you tell me whether the overall sentiment of the text indicates some sort of confusion or is it positive or negative?
+Example:
+Ya, yes, ok, yep are all positive sentiments
+no, na, ewww are negative sentiments
+umm is confused
+"""

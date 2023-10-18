@@ -6,7 +6,7 @@ from image_generator_bot.config import cfg
 
 def download_image_file(image_url, image_name):
     img_data = requests.get(image_url).content
-    path = cfg.image_path / uuid.uuid5(name = f"{image_name}.jpg")
+    path = cfg.image_path /  f"{image_name}.jpg"
     with open(path, 'wb') as handler:
         handler.write(img_data)
 

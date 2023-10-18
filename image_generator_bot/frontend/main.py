@@ -5,11 +5,23 @@ from image_generator_bot.config import cfg
 import image_generator_bot.backend.image_generator as image_g
 from image_generator_bot.log_factory import logger
 import image_generator_bot.backend.download_img as download_img
-from langchain.chains import create_tagging_chain_pydantic
-
+import image_generator_bot.backend.tagging_service as ts
+from image_generator_bot.backend.model import ResponseTags
 
 def is_yes(input_msg: str) -> bool:
     return input_msg in ("yes", "y", "Yes", "Y")
+
+def answer(input_msg: str):
+    response_tags: ResponseTags =  ts.sentiment_chain_factory().run(ts.prepare_sentiment_input(input_msg))
+    logger.info(response_tags)
+    if response_tags.is_positive:
+        return "positive"
+    elif response_tags.is_negative:
+        return "negative"
+    elif response_tags.sounds_confused:
+        return "confused"
+    else:
+        return "did not understand"
 
 def is_exit(input_msg: str) -> bool:
     return input_msg in ("exit", "EXIT", "Exit")
@@ -30,31 +42,31 @@ async def start() -> cl.Message:
         prompt_satisfied = await ask_user_msg(
             "Are you satisfied with the prompt generated?"
         )
-        if is_yes(prompt_satisfied["content"]):
+        if answer(prompt_satisfied["content"]) == "positive":
             while True:
                 image_url = await generate_image(content_of_image, prompt)
                 image_satisfied = await ask_user_msg(
                     "Are you satisfied with the image generated?"
                 )
-                if is_yes(image_satisfied["content"]):
+                if answer(image_satisfied['content']) == "positive":
                     download = await ask_user_msg(
                         "Thank You! Do you want Download this image?"
                     )
-                    if is_yes(download["content"]):
+                    if answer(download["content"]) == "positive":
                         await download_image(image_url)
                         break
                     else:
                         await cl.Message(content="thank you").send()
                     break
                     
-                elif is_exit(image_satisfied["content"]):
+                elif answer(image_satisfied["content"]) == "negative":
                     await cl.Message(content="thank you").send()
                     break
                 else:
                     await cl.Message(content="I will try again").send()
                     continue
             break
-        elif is_exit(prompt_satisfied["content"]):
+        elif answer(prompt_satisfied["content"]) == "negative":
             await cl.Message(content="thank you").send()
             break
         else:

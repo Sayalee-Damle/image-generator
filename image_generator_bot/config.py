@@ -30,9 +30,12 @@ class Config:
     if not image_path.exists():
         image_path.mkdir(exist_ok=True, parents=True)
 
+    project_root = Path(os.getenv("PROJECT_ROOT"))
+
 
 cfg = Config()
 
 
 if __name__ == "__main__":
     print("llm: ", cfg.llm)
+    print("project root: ", cfg.project_root / "toml_support")
