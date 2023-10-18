@@ -19,7 +19,7 @@ This creates a specific environment with all the libraries in need!
 ``` To specify configurations use .env file ```
 
 ## Configuration
-The .env file might be configured like this:
+configure the .env file might like this:
 
 ```OPENAI_API_KEY= openai api key...
 OPENAI_MODEL = model to be used
