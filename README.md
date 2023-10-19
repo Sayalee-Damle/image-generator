@@ -21,7 +21,8 @@ This creates a specific environment with all the libraries in need!
 ## Configuration
 configure the .env file might like this:
 
-```OPENAI_API_KEY= openai api key...
+```
+OPENAI_API_KEY= openai api key...
 OPENAI_MODEL = model to be used
 IMAGE_PATH_DISC = /ImagesDall-E/
 PROJECT_ROOT =  root folder of project
