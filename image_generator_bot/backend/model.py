@@ -1,5 +1,3 @@
-from typing import List, Optional
-
 from pydantic import Field
 
 from pydantic.v1 import BaseModel, Field
@@ -20,4 +18,3 @@ class ResponseTags(BaseModel):
         ...,
         description="Whether the text with the answers contains a negative tone to it.",
     )
-    

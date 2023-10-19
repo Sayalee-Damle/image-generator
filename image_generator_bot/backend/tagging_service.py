@@ -1,6 +1,3 @@
-from typing import List
-
-
 from langchain.chains import LLMChain
 from langchain.chains import create_tagging_chain_pydantic
 from langchain.prompts import (
@@ -10,8 +7,8 @@ from langchain.prompts import (
     SystemMessagePromptTemplate,
 )
 
-from image_generator_bot.config import cfg
-from image_generator_bot.log_factory import logger
+from image_generator_bot.configuration.config import cfg
+from image_generator_bot.configuration.log_factory import logger
 from image_generator_bot.backend.model import ResponseTags
 from image_generator_bot.backend.toml_support import read_prompts_toml
 
@@ -45,6 +42,7 @@ def sentiment_chain_factory() -> LLMChain:
 
 chain = create_tagging_chain_pydantic(ResponseTags, cfg.llm, prompt_factory_sentiment())
 
+
 def prepare_sentiment_input(question: str) -> dict:
     return {"answer": question}
 
@@ -61,6 +59,8 @@ if __name__ == "__main__":
         logger.info(answer)
 
     # Does your organization support an event driven architecture for data integration?
-    
-    response_tags: ResponseTags =  sentiment_chain_factory().run(prepare_sentiment_input("yes"))
-    process_answer(tag_response(response_tags.is_positive)['answer'])
+
+    response_tags: ResponseTags = sentiment_chain_factory().run(
+        prepare_sentiment_input("yes")
+    )
+    process_answer(tag_response(response_tags.is_positive)["answer"])
