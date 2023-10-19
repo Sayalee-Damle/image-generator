@@ -32,3 +32,7 @@ VERBOSE_LLM = True
 TOKEN_LIMIT = 13000
 ```
 
+## To run the chatbot in chainlit use this command in the environment created
+```
+chainlit run .\image_generator_bot\frontend\main.py
+```
