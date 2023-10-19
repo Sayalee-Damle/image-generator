@@ -29,5 +29,6 @@ PROJECT_ROOT =  root folder of project
 REQUEST_TIMEOUT = 300
 LLM_CACHE = False
 VERBOSE_LLM = True
-TOKEN_LIMIT = 13000```
+TOKEN_LIMIT = 13000
+```
 
